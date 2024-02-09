@@ -38,3 +38,33 @@ let triangle = Triangle(sideA: 3, sideB: 4, sideC: 5)
 print("Площадь треугольника: \(triangle.area())")
 
 print("Треугольник прямоугольный: \(triangle.isRight)")
+
+// Юнит-тесты
+import XCTest
+
+class ShapeTests: XCTestCase {
+    
+    func testCircleArea() {
+        let circle = Circle(radius: 5.0)
+        XCTAssertEqual(circle.area(), 78.53981633974483)
+    }
+    
+    func testTriangleArea() {
+        let triangle = Triangle(sideA: 3.0, sideB: 4.0, sideC: 5.0)
+        XCTAssertEqual(triangle.area(), 6.0)
+    }
+    
+    func testRightAngledTriangle() {
+        let triangle = Triangle(sideA: 3.0, sideB: 4.0, sideC: 5.0)
+        XCTAssertTrue(triangle.isRight)
+    }
+    
+    static var allTests = [
+        ("testCircleArea", testCircleArea),
+        ("testTriangleArea", testTriangleArea),
+        ("testRightAngledTriangle", testRightAngledTriangle)
+    ]
+}
+
+// Запускаем тесты
+ShapeTests.defaultTestSuite.run()
